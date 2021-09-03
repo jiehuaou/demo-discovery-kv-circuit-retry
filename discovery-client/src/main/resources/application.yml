@@ -1,0 +1,27 @@
+server:
+  port: 8088
+
+spring:
+  application:
+    name: client-1
+  config:
+    import: "optional:consul:localhost:8500"
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      config:
+        enabled: true
+      discovery:
+        instanceId: ${spring.application.name}:${random.value}
+
+    loadbalancer:
+      cache:
+        ttl: 3s
+
+#        healthCheckPath: /custom-health-check
+#        healthCheckInterval: 10s
+
+
+
+

@@ -1,0 +1,9 @@
+#spring:
+#  application:
+#    name: client-1
+#  cloud:
+#    consul:
+#      host: localhost
+#      port: 8500
+#      config:
+#        enabled: true
