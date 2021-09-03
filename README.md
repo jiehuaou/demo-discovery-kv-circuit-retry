@@ -7,12 +7,13 @@ choco install consul
 consul agent -dev -node machine1
 
 ## consul put KV with python  ##
-
+```
 // pip install python-consul
->>> import consul
->>> c = consul.Consul()
->>> c.kv.put("qqq", "hello world")
->>> c.kv.put("www/abc", "wiki")
+import consul
+c = consul.Consul()
+c.kv.put("qqq", "hello world")
+c.kv.put("www/abc", "wiki")
+```
 
 ## consul cmd put KV  ##
 
@@ -65,22 +66,36 @@ consul kv put "config/data-service-1/aws/sample"    "dynamo-db"
 
 ## launch service svc in discovery-service/target
 
-java -jar -Dserver.port=8080  service-0.0.1-SNAPSHOT.jar --label=pod-1
+java -jar -Dserver.port=8081  service-0.0.1-SNAPSHOT.jar --label=app1
 
-java -jar -Dserver.port=8081  service-0.0.1-SNAPSHOT.jar --label=pod-2
+java -jar -Dserver.port=8082  service-0.0.1-SNAPSHOT.jar --label=app2
+
+java -jar -Dserver.port=8083  service-0.0.1-SNAPSHOT.jar --label=bad
+
 
 ## launch client svc in discovery-client/target
 
 java -jar -Dserver.port=8088  client-0.0.1-SNAPSHOT.jar 
 
+## launch circuit-retry-client svc in demo-circuit-retry/target
+
+java -jar -Dserver.port=8089  client-0.0.1-SNAPSHOT.jar 
+
+
 ## test call from client to service
 
 curl http://localhost:8088/another-id
 
->>/id:hello:app1
->>/id:hello:app2
->>/id:hello:app1
->>/id:hello:app2
+ - /id:hello:app1
+ - /id:hello:app2
+ - /id:hello:bad
 ...
 
+## test retry call from client to service
+
+curl http://localhost:8089/retry-id
+
+## test circuit-break-retry call from client to service
+
+curl http://localhost:8089/circuit-id
 
