@@ -1,0 +1,67 @@
+server:
+  port: 9091
+
+spring:
+  application:
+    name: circuitbreak-client-2
+  config:
+    import: "optional:consul:localhost:8500/"
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      config:
+        enabled: true
+        failFast: false
+      discovery:
+        instanceId: ${spring.application.name}:${server.port}
+        catalogServicesWatch:
+          enabled: false
+
+    loadbalancer:
+      cache:
+        ttl: 3s
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        registerHealthIndicator: true
+#        ringBufferSizeInClosedState: 5
+#        ringBufferSizeInHalfOpenState: 3
+        waitDurationInOpenState: 10s         # wait 5 sec from open to half-open
+        permittedNumberOfCallsInHalfOpenState: 3
+        slidingWindowType: COUNT_BASED   # sliding Window based on counting
+        slidingWindowSize: 10            # 10 call in one sliding Window
+        failureRateThreshold: 40         # 40% failure in one sliding Window
+        slowCallRateThreshold: 40        # 40% slow in one sliding Window
+        slowCallDurationThreshold: 6s    # longer than 6 sec -> slow call
+        minimumNumberOfCalls: 5          # at least 5 call to calculate the error rate
+    instances:
+      example1:
+        baseConfig: default
+  retry:
+    instances:
+      retrySearch1:
+        maxRetryAttempts: 3
+        waitDuration: 200ms
+        ignoreExceptions:
+          - io.github.resilience4j.circuitbreaker.CallNotPermittedException
+
+#management:
+#  health:
+#    circuitbreakers:
+#      enabled: true
+
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+
