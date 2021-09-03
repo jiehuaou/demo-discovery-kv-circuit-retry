@@ -99,3 +99,24 @@ http://127.0.0.1:8500/ui/dc1/kv
 
 	curl http://localhost:8089/circuit-id
 
+## to expose detail status
+```
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        registerHealthIndicator: true
+		
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+
+```
