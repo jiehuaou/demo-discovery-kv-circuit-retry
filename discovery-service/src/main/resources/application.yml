@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: data-service-1
+  config:
+    import: "optional:consul:localhost:8500"
+  cloud:
+    consul:
+#      host: localhost
+#      port: 8500
+      config:
+        enabled: true
+        failFast: false
+#        import-check:
+#          enabled: false
+      discovery:
+        instanceId: ${spring.application.name}:${label}
+#        healthCheckPath: /custom-health-check
+        healthCheckInterval: 3s
+        catalogServicesWatch:
+          enabled: false
+        metadata:
+          myfield: myvalue
+          anotherfield: anothervalue
+
+

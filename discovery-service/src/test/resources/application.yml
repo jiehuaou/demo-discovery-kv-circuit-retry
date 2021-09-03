@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: test-service-name
+
+  cloud:
+#    bus:
+#      enabled: false
+    discovery:
+      enabled: false
+    consul:
+      enabled: false
+      config:
+        enabled: false
+
+label: hello
