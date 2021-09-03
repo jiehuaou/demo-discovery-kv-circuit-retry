@@ -1,0 +1,22 @@
+[
+  {
+    "Key": "config/data-service-1/aws/user",
+    "Value": "aGVsbG8td29ybGQ="
+  },
+  {
+    "Key": "config/data-service-1/aws/password",
+    "Value": "MTIzNDU2"
+  },
+  {
+    "Key": "config/data-service-1/aws/sample",
+    "Value": "bW9uZ29kYjE="
+  },
+  {
+    "Key": "config/data-service-1/aws/successCount",
+    "Value": "MTAK"
+  },
+  {
+    "Key": "config/data-service-1/aws/failCount",
+    "Value": "MTAK"
+  }
+]
