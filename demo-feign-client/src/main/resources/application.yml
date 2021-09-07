@@ -1,0 +1,21 @@
+server:
+  port: 9080
+
+spring:
+  application:
+    name: feign-client
+
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+#      config:
+#        enabled: false
+      discovery:
+        instanceId: ${spring.application.name}:${server.port}
+        catalogServicesWatch:
+          enabled: false
+
+    loadbalancer:
+      cache:
+        ttl: 3s
