@@ -19,3 +19,22 @@ spring:
     loadbalancer:
       cache:
         ttl: 3s
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        registerHealthIndicator: true
+        #        ringBufferSizeInClosedState: 5
+        #        ringBufferSizeInHalfOpenState: 3
+        waitDurationInOpenState: 10s         # wait 5 sec from open to half-open
+        permittedNumberOfCallsInHalfOpenState: 3
+        slidingWindowType: COUNT_BASED   # sliding Window based on counting
+        slidingWindowSize: 10            # 10 call in one sliding Window
+        failureRateThreshold: 40         # 40% failure in one sliding Window
+        slowCallRateThreshold: 40        # 40% slow in one sliding Window
+        slowCallDurationThreshold: 6s    # longer than 6 sec -> slow call
+        minimumNumberOfCalls: 5          # at least 5 call to calculate the error rate
+    instances:
+      example1:
+        baseConfig: default
