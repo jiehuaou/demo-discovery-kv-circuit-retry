@@ -1,9 +1,8 @@
 package com.example.demo.svc;
 
-import com.example.demo.logic.LogicHello;
+import com.example.demo.remote.LogicHello;
 import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
-import io.github.resilience4j.retry.RetryRegistry;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

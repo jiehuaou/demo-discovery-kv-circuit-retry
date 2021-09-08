@@ -1,11 +1,11 @@
 package com.example.demo.controller;
 
-import com.example.demo.logic.LogicHello;
-import com.example.demo.logic.FeignHelloClient;
+import com.example.demo.remote.FeignHelloClient;
 import com.example.demo.svc.ServiceHello;
 import feign.Feign;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,7 +20,8 @@ public class FeignClientController {
     @PostConstruct
     public void afterConstruct(){
 
-        myFeign = Feign.builder().target(FeignHelloClient.class, "http://localhost:8080/");
+        myFeign = Feign.builder()
+                .target(FeignHelloClient.class, "http://localhost:8080/");
 
     }
 
