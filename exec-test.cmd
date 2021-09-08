@@ -1,11 +1,15 @@
 
 
-curl http://localhost:8088/another-id
+curl http://localhost:9081/another-id
 
-curl http://localhost:8088/another-id
+# circuit-break and retry 
+curl http://localhost:9081/circuit-id
 
-curl http://localhost:8088/circuit-id
+# only retry 
+curl http://localhost:9081/retry-id
 
-curl http://localhost:8088/retry-id
 
+curl http://localhost:9083/find-id
+
+curl http://localhost:9083/feign-id
 
