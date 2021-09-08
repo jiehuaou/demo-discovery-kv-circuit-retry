@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.logic.LogicHello;
-import com.example.demo.logic.ManuallyFeignHelloClient;
+import com.example.demo.logic.FeignHelloClient;
 import com.example.demo.svc.ServiceHello;
 import feign.Feign;
 import lombok.extern.slf4j.Slf4j;
@@ -15,12 +15,12 @@ import javax.annotation.PostConstruct;
 @RestController
 public class FeignClientController {
 
-    ManuallyFeignHelloClient myFeign;
+    FeignHelloClient myFeign;
 
     @PostConstruct
     public void afterConstruct(){
 
-        myFeign = Feign.builder().target(ManuallyFeignHelloClient.class, "http://localhost:8080/");
+        myFeign = Feign.builder().target(FeignHelloClient.class, "http://localhost:8080/");
 
     }
 
