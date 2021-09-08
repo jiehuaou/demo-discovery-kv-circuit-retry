@@ -18,7 +18,7 @@ public class AnotherClientController {
     RestTemplate rest;
 
 
-    @GetMapping("/another-id")
+    @GetMapping("/load-id")
     public String discoveryId() throws ServiceUnavailableException {
         ResponseEntity<String> resp = rest.getForEntity("http://data-service-1/id", String.class);
         System.out.println("invoke ---> " + "http://data-service-1/id");
