@@ -39,10 +39,21 @@ public class LookupService {
     static final String idUrl = "http://data-service-1/id";
     static final String url404 = "http://data-service-1/404";
 
+    @CircuitBreaker(name = "example1", fallbackMethod = "circuitLookupDefault")
+    public String circuitOnly(){
+        System.out.println("invoke ---> " + idUrl);
+        ResponseEntity<String> resp = rest.getForEntity(idUrl, String.class);
+        String data = resp.getBody();
+        System.out.println("return ---> " + data);
+        return data;
+    }
 
+    /**
+    *   retry will ignore the case in CallNotPermittedException
+     */
     @Retry(name="retrySearch1", fallbackMethod = "retryLookupDefault" )
     @CircuitBreaker(name = "example1" )
-    public String lookup(){
+    public String retryCircuit(){
         System.out.println("invoke ---> " + idUrl);
         ResponseEntity<String> resp = rest.getForEntity(idUrl, String.class);
         String data = resp.getBody();
@@ -52,15 +63,15 @@ public class LookupService {
 
     public String circuitLookupDefault(Exception e){
         System.out.println("call ----> CircuitBreaker fallbackMethod");
-        return "CircuitBreaker for service down";
+        return " CircuitBreaker, service down + " + e.getClass().getSimpleName();
     }
     public String retryLookupDefault(Exception e){
         System.out.println("call ----> Retry fallbackMethod");
-        return "Retry for service down";
+        return " Retry, service down + " + e.getClass().getSimpleName();
     }
 
     @Retry(name="retrySearch1", fallbackMethod = "retryLookupDefault")
-    public String retryLookup(){
+    public String retryOnly(){
         System.out.println("invoke ---> " + idUrl);
         ResponseEntity<String> resp = rest.getForEntity(idUrl, String.class);
         String data = resp.getBody();

@@ -20,22 +20,19 @@ public class MyCircuitBreakListener {
             @Override
             public void onEntryAddedEvent(EntryAddedEvent<CircuitBreaker> entryAddedEvent) {
                 entryAddedEvent.getAddedEntry().getEventPublisher()
-                        .onFailureRateExceeded(event -> log.error("circuit breaker {} failure rate {} on {}",
-                                event.getCircuitBreakerName(), event.getFailureRate(), event.getCreationTime())
+                        .onFailureRateExceeded(event -> log.warn("circuit breaker {} ... failure rate {} ",
+                                event.getCircuitBreakerName(), event.getFailureRate())
                         )
 //                        .onSlowCallRateExceeded(event -> log.error("circuit breaker {} slow call rate {} on {}",
 //                                event.getCircuitBreakerName(), event.getSlowCallRate(), event.getCreationTime())
 //                        )
-                        .onCallNotPermitted(event -> log.error("circuit breaker {} call not permitted {}",
-                                event.getCircuitBreakerName(), event.getCreationTime())
+                        .onCallNotPermitted(event -> log.warn("circuit breaker {} ... call not permitted ",
+                                event.getCircuitBreakerName())
                         )
-                        .onError(event -> log.error("circuit breaker {} error with duration {}s",
-                                event.getCircuitBreakerName(), event.getElapsedDuration().getSeconds())
-                        )
-                        .onStateTransition(event -> log.warn("circuit breaker {} state transition from {} to {} on {}",
-                                event.getCircuitBreakerName(), event.getStateTransition().getFromState(),
-                                event.getStateTransition().getToState(), event.getCreationTime())
-                        );
+//                        .onError(event -> log.error("circuit breaker {} error with duration {}s",
+//                                event.getCircuitBreakerName(), event.getElapsedDuration().getSeconds())
+//                        )
+                        .onStateTransition(System.out::println);
             }
 
             @Override

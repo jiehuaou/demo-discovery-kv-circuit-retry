@@ -11,13 +11,18 @@ public class MyController {
     LookupService lookupService;
 
     @GetMapping("/circuit-id")
-    public String getString() {
-        return lookupService.lookup(); // circuit-break
+    public String getCircuit() {
+        return lookupService.circuitOnly(); // circuit-break only
+    }
+
+    @GetMapping("/retry-circuit-id")
+    public String getRetryCircuit() {
+        return lookupService.retryCircuit(); // circuit-break & retry
     }
 
     @GetMapping("/retry-id")
-    public String getRetryString() {
-        return lookupService.retryLookup(); // retry
+    public String getRetry() {
+        return lookupService.retryOnly(); // retry
     }
 
     @GetMapping("/fetch-404")
