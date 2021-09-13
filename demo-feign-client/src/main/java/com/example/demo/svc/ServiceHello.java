@@ -11,7 +11,7 @@ import javax.annotation.PostConstruct;
 
 @Slf4j
 @Service
-public class ServiceHello {
+public class  ServiceHello {
 
     final static String SAMPLE_CIRCUIT = "sample1";
 
@@ -43,6 +43,6 @@ public class ServiceHello {
 
     public String circuitLookupDefault(Exception e){
         System.out.println("call ----> CircuitBreaker fallbackMethod");
-        return "CircuitBreaker fallback for service down";
+        return "CircuitBreaker fallback for " + e.getClass().getSimpleName();
     }
 }

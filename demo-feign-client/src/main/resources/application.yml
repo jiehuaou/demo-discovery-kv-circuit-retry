@@ -19,6 +19,8 @@ spring:
     loadbalancer:
       cache:
         ttl: 3s
+      ribbon:
+        enable: true
 
 resilience4j:
   circuitbreaker:
