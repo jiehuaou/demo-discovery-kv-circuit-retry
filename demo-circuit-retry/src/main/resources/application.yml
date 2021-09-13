@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: circuitbreak-client-2
+    name: circuitbreak-client
   config:
     import: "optional:consul:localhost:8500/"
   cloud:
