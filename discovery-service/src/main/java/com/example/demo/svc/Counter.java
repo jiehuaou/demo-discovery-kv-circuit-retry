@@ -1,12 +1,10 @@
-package com.example.demo;
+package com.example.demo.svc;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
-@Service
+@Component
 public class Counter {
 
     private long counter = 0;

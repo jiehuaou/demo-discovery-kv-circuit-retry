@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.svc;
 
 import javax.annotation.PostConstruct;
 
@@ -31,11 +31,14 @@ public class MyData {
     @PostConstruct
     public void postConstruct() {
         // to validate if properties are loaded
-        System.out.println("** user : " + user);
-        System.out.println("** password : " + password);
-        System.out.println("** sample : " + sample);
-        System.out.println("** successCount : " + successCount);
-        System.out.println("** failCount : " + failCount);
+        System.out.println("      ");
+        System.out.println("***   user : " + user);
+        System.out.println("***   password : " + password);
+        System.out.println("***   sample : " + sample);
+        System.out.println("***   successCount : " + successCount);
+        System.out.println("***   failCount : " + failCount);
+        System.out.println("      ");
+
     }
 
     public String getUser() {

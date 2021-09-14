@@ -1,19 +1,20 @@
 server:
-  port: 8088
+  port: 9082
 
 spring:
   application:
     name: client-1
-  config:
-    import: "optional:consul:localhost:8500"
+#  config:
+#    import: "optional:consul:localhost:8500"
   cloud:
     consul:
       host: localhost
       port: 8500
       config:
-        enabled: true
+        enabled: false
       discovery:
-        instanceId: ${spring.application.name}:${random.value}
+        instanceId: ${spring.application.name}:${server.port}
+        healthCheckInterval: 3s
 
     loadbalancer:
       cache:
