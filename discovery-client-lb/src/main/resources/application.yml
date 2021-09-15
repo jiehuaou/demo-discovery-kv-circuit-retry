@@ -20,14 +20,13 @@ spring:
 #        blocking:
 #          enabled: true
 
-#    loadbalancer:
-#      health-check:
-#        refetch-instances: true
-#        refetch-instances-interval: 3s
-#        path:
-#          data-service-1: /actuator/health
-#      ribbon:
-#        enabled: false
-#      cache:
-#        ttl: 1s
-#      cache.enabled: false
+    loadbalancer:
+      health-check:
+        refetch-instances: true
+        refetch-instances-interval: 1s
+        interval: 1s
+      ribbon:
+        enabled: false
+      cache:
+        ttl: 2s
+        enabled: true

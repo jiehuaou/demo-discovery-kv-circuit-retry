@@ -1,6 +1,7 @@
 package com.example.demo.other;
 
 import com.example.demo.MyData;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
 import javax.naming.ServiceUnavailableException;
 import java.net.URI;
 
+@Slf4j
 @RestController
 public class AnotherClientController {
 
@@ -24,10 +26,17 @@ public class AnotherClientController {
 
     @GetMapping("/load-id")
     public String discoveryId() throws ServiceUnavailableException {
-        ResponseEntity<String> resp = rest.getForEntity("http://data-service-1/id", String.class);
-        System.out.println("invoke ---> " + "http://data-service-1/id");
-        String data = resp.getBody();
-        System.out.println("return ---> " + data);
+
+        log.info("invoke ---> {}" , "http://data-service-1/id");
+        String data;
+        try {
+            ResponseEntity<String> resp = rest.getForEntity("http://data-service-1/id", String.class);
+            data = resp.getBody();
+        }catch (Exception ex){
+            data = ex.getMessage();
+        }
+
+        log.info("return ---> {}" , data);
         return data;
     }
 

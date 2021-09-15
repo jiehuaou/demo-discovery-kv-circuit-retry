@@ -16,22 +16,22 @@ import org.springframework.core.env.Environment;
 //@Configuration
 public class CustomLoadBalancerConfiguration {
 
-    @Autowired
-    private DiscoveryClient discoveryClient;
+//    @Autowired
+//    private DiscoveryClient discoveryClient;
 
     @Bean
     public ServiceInstanceListSupplier discoveryClientServiceInstanceListSupplier(
 //            DiscoveryClient discoveryClient,
-            Environment environment,
+//            Environment environment,
             ConfigurableApplicationContext context) {
 
 
-        ServiceInstanceListSupplier supplier = new DiscoveryClientServiceInstanceListSupplier(discoveryClient, environment);
+//        ServiceInstanceListSupplier supplier = new DiscoveryClientServiceInstanceListSupplier(discoveryClient, environment);
 
         return ServiceInstanceListSupplier.builder()
-                .withBase(supplier)
-               // .withDiscoveryClient()
-              //  .withBlockingHealthChecks()
+//                .withBase(supplier)
+                .withDiscoveryClient()
+//                .withBlockingHealthChecks()
                 .withHealthChecks()
                 .withCaching()
                 .build(context);
