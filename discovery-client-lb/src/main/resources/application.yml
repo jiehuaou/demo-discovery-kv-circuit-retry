@@ -1,0 +1,33 @@
+server:
+  port: 8088
+
+spring:
+  application:
+    name: client-1
+
+
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      config:
+        enabled: false
+      discovery:
+        instanceId: ${spring.application.name}:${server.port}
+        healthCheckInterval: 3s
+        reactive:
+          enabled: false
+#        blocking:
+#          enabled: true
+
+#    loadbalancer:
+#      health-check:
+#        refetch-instances: true
+#        refetch-instances-interval: 3s
+#        path:
+#          data-service-1: /actuator/health
+#      ribbon:
+#        enabled: false
+#      cache:
+#        ttl: 1s
+#      cache.enabled: false

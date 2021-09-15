@@ -2,15 +2,13 @@ package com.example.demo;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import com.example.demo.svc.Counter;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.junit4.SpringRunner;
 
 //@TestPropertySource(properties = {"spring.cloud.consul.config.enabled=false"})
-@SpringBootTest
+@SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
 //@RunWith(SpringRunner.class)
 public class DemoApplicationTests {
 	@Autowired

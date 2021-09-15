@@ -4,8 +4,7 @@ server:
 spring:
   application:
     name: client-1
-#  config:
-#    import: "optional:consul:localhost:8500"
+
   cloud:
     consul:
       host: localhost
@@ -18,11 +17,4 @@ spring:
 
     loadbalancer:
       cache:
-        ttl: 3s
-
-#        healthCheckPath: /custom-health-check
-#        healthCheckInterval: 10s
-
-
-
-
+        ttl: 1s
