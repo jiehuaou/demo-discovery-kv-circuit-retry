@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
-@LoadBalancerClient(value = "data-service-1", configuration = CustomLoadBalancerConfiguration.class)
+@LoadBalancerClient(value = "data-service-1", configuration = LoadBalancerConfiguration.class)
 @Configuration
 public class RestConfig {
 

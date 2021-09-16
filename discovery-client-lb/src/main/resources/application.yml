@@ -15,16 +15,17 @@ spring:
       discovery:
         instanceId: ${spring.application.name}:${server.port}
         healthCheckInterval: 3s
-        reactive:
-          enabled: false
+#        reactive:
+#          enabled: false
 #        blocking:
 #          enabled: true
 
     loadbalancer:
       health-check:
         refetch-instances: true
-        refetch-instances-interval: 1s
-        interval: 1s
+        refetch-instances-interval: 2s
+#        repeat-health-check: true
+#        interval: 10s
       ribbon:
         enabled: false
       cache:
