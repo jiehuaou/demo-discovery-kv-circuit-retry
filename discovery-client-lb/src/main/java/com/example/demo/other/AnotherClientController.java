@@ -21,7 +21,7 @@ public class AnotherClientController {
     MyData data ;
 
     @Autowired
-    RestTemplate rest;
+    RestTemplate restTemplate;
 
 
     @GetMapping("/load-id")
@@ -30,7 +30,7 @@ public class AnotherClientController {
         log.info("invoke ---> {}" , "http://data-service-1/id");
         String data;
         try {
-            ResponseEntity<String> resp = rest.getForEntity("http://data-service-1/id", String.class);
+            ResponseEntity<String> resp = restTemplate.getForEntity("http://data-service-1/id", String.class);
             data = resp.getBody();
         }catch (Exception ex){
             data = ex.getMessage();
