@@ -30,6 +30,6 @@ or even fetch the unhealthy instance.
 127.0.0.1  ESPNW0802.abchome.net (your host.domain name)
 ```
 > consul try to register instance with host.domain format, 
-> and ServiceInstanceListSupplier try to resolve it back to IP, 
+> and **ServiceInstanceListSupplier** try to resolve it back to IP, 
 > which can cause unknown IP.
 > 
