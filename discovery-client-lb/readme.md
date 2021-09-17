@@ -25,11 +25,11 @@ spring cloud load-balancer can fetch healthy service instance list.
 spring cloud load-balancer can not fetch service instance list 
 or even fetch the unhealthy instance.
 
-### fix : map your host.domain to 127.0.0.1 in System32/drivers/etc/hosts
+### fix : map your host.domain to 127.0.0.1 in System32/drivers/etc/hosts, such as
 ```
 127.0.0.1  ESPNW0802.abchome.net (your host.domain name)
 ```
 > consul try to register instance with host.domain format, 
-> and ServiceInstanceListSupplier try to ressolve it back to IP, 
+> and ServiceInstanceListSupplier try to resolve it back to IP, 
 > which can cause unknown IP.
 > 
