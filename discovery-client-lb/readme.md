@@ -25,3 +25,7 @@ spring cloud load-balancer can fetch healthy service instance list.
 spring cloud load-balancer can not fetch service instance list 
 or even fetch the unhealthy instance.
 
+### fix : map your host.domain to 127.0.0.1 in System32/drivers/etc/hosts
+```
+127.0.0.1  EPCNSZXW0802.mshome.net
+```

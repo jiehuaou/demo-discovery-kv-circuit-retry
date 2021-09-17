@@ -9,6 +9,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
 
 @LoadBalancerClient(value = "data-service-1", configuration = LoadBalancerConfiguration.class)
 @Configuration
@@ -17,6 +18,12 @@ public class RestConfig {
     @Bean
     public RestTemplate loadbalancedRestTemplate() {
         return new RestTemplate();
+    }
+
+    @LoadBalanced
+    @Bean
+    WebClient.Builder webClientBuilder() {
+        return WebClient.builder();
     }
 }
 

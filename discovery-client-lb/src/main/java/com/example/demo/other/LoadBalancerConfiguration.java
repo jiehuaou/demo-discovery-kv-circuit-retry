@@ -9,12 +9,13 @@ import org.springframework.context.annotation.Bean;
 
 public class LoadBalancerConfiguration {
     @Bean
-    public ServiceInstanceListSupplier discoveryClientServiceInstanceListSupplier(
+    public ServiceInstanceListSupplier supplier(
             ConfigurableApplicationContext context) {
+        //
         return ServiceInstanceListSupplier.builder()
                 .withDiscoveryClient()
-                .withHealthChecks()
-                .withCaching()
+//                .withHealthChecks()
+//                .withCaching()
                 .build(context);
     }
 }
