@@ -24,8 +24,8 @@ spring:
       health-check:
         refetch-instances: true
         refetch-instances-interval: 2s
-#        repeat-health-check: true
-#        interval: 10s
+        repeat-health-check: true
+        interval: 10s
       ribbon:
         enabled: false
       cache:
