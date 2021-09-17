@@ -27,5 +27,9 @@ or even fetch the unhealthy instance.
 
 ### fix : map your host.domain to 127.0.0.1 in System32/drivers/etc/hosts
 ```
-127.0.0.1  EPCNSZXW0802.mshome.net
+127.0.0.1  ESPNW0802.abchome.net (your host.domain name)
 ```
+> consul try to register instance with host.domain format, 
+> and ServiceInstanceListSupplier try to ressolve it back to IP, 
+> which can cause unknown IP.
+> 
