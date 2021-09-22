@@ -14,8 +14,8 @@ public class LoadBalancerConfiguration {
         //
         return ServiceInstanceListSupplier.builder()
                 .withDiscoveryClient()
-//                .withHealthChecks()
-//                .withCaching()
+                .withHealthChecks()
+                .withCaching()
                 .build(context);
     }
 }

@@ -1,6 +1,7 @@
 package com.example.demo.other;
 
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cloud.client.loadbalancer.reactive.ReactorLoadBalancerExchangeFilterFunction;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,7 +14,8 @@ public class MyReactiveController {
     private final WebClient.Builder loadBalancedWebClientBuilder;
     private final ReactorLoadBalancerExchangeFilterFunction lbFunction;
 
-    public MyReactiveController(WebClient.Builder builder, ReactorLoadBalancerExchangeFilterFunction func) {
+    public MyReactiveController(@Qualifier("load-balance") WebClient.Builder builder,
+                                ReactorLoadBalancerExchangeFilterFunction func) {
         this.loadBalancedWebClientBuilder = builder;
         this.lbFunction = func;
     }
