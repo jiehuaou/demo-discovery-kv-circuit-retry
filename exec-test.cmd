@@ -1,8 +1,8 @@
 
-# only load-balance
-curl http://localhost:9082/load-id
+# only Spring Cloud LoadBalancer
+curl http://localhost:8088/load-id
 
-x=1; while [ $x -le 60 ]; do curl http://localhost:9082/load-id ; echo $(( x++ )) ; sleep 1 ; done
+x=1; while [ $x -le 600 ]; do curl http://localhost:8088/load-id ; echo $(( x++ )) ; sleep 1 ; done
 
 
 # circuit-break and retry 
