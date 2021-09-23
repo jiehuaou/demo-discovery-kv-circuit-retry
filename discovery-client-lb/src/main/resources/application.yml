@@ -23,11 +23,11 @@ spring:
     loadbalancer:
       health-check:
         refetch-instances: true
-        refetch-instances-interval: 2s
-        repeat-health-check: true
-        interval: 10s
+        refetch-instances-interval: 5s     # interval for refetch-instances
+        repeat-health-check: true         # no need as instances will be refetched
+        interval: 2s                      # Interval for HealthCheck
       ribbon:
         enabled: false
       cache:
-        ttl: 10s
+        ttl: 20s
         enabled: true
