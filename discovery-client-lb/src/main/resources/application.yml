@@ -29,5 +29,5 @@ spring:
       ribbon:
         enabled: false
       cache:
-        ttl: 2s
+        ttl: 10s
         enabled: true
